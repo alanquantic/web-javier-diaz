@@ -1,0 +1,181 @@
+[SECCIÓN]: Header
+[ANTES]: Imagen jd-blue-xqkO9vAd.png es pequeña 
+[DESPUÉS]: Aumentar el tamaño de la imagen jd-blue-xqkO9vAd.png a 50 px
+____________________________________________________________________________________
+[SECCIÓN]: courses/energizate-y-cambia-tu-vida
+1. Cambiar la duración del curso en todos los lados que aparezca
+   - ANTES: 10 horas de contenido
+   - DESPUÉS: 6 horas de contenido 
+2. Eliminar contenido 
+   - ANTES: Disponible próximamente 
+   - DESPUÉS: Sin texto 
+____________________________________________________________________________________
+[SECCIÓN]: courses/empodera-tu-mente
+1. Cambiar la duración del curso en todos los lados que aparezca
+   - ANTES: 5 horas de contenido
+   - DESPUÉS: 3 horas de contenido 
+2. Eliminar contenido 
+   - ANTES: Disponible próximamente 
+   - DESPUÉS: Sin texto 
+___________________________________________________________________________________
+
+
+[SECCIÓN]: Beneficios de Nuestros Servicios
+[ANTES]: Métodos probados con más de 3,000 vendedores capacitados.
+[DESPUÉS]: Métodos probados con más de 5,000 vendedores capacitados.
+____________________________________________________________________________________
+
+
+[SECCIÓN]: Cursos y Programas de Entrenamiento
+[ANTES]: Disponible próximamente
+[DESPUÉS]: Sin texto
+____________________________________________________________________________________
+
+
+[SECCIÓN]: Servicios Personalizados
+Añadir 2 servicios.   
+1. Consultoría Estratégica Comercial
+Revisión y optimización de procesos de venta, discurso comercial, seguimiento, y más.
+2. Estrategia de Redes Sociales basado en inteligencia artificial
+
+
+Añadir formulario de contacto a todos los botones “Más información”  
+[ANTES]: Sin función
+[DESPUÉS]: Abrir formulario de contacto 
+____________________________________________________________________________________
+
+
+[SECCIÓN]: ¿Tienes Dudas? Aquí están las Respuestas
+Sustituir preguntas y respuestas 
+[ANTES]:
+1. ¿Los cursos son en vivo o grabados?
+Ofrecemos ambas modalidades. Los cursos grabados te permiten avanzar a tu ritmo, mientras que las sesiones en vivo brindan interacción directa y resolución de dudas en tiempo real.
+2. ¿Qué sucede si no estoy satisfecho con el curso?
+Ofrecemos garantía de satisfacción de 30 días. Si no estás completamente satisfecho, te reembolsamos el 100% de tu inversión sin preguntas.
+[DESPUÉS]: 
+1. ¿Qué pasa si después de tomar el curso no veo mejoras en mis ventas?"
+Implementación garantizada con resultados medibles.Si aplicas las estrategias correctamente, verás cambios en tus cierres. Además, ofrecemos seguimiento y ajustes en tu proceso para asegurarnos de que cada técnica se traduzca en más ventas.
+2. ¿Ofrecen seguimiento o asesoría después del curso?
+Dependiendo del plan que elijas, puedes acceder a asesoría personalizada y sesiones de ajuste. No solo aprendes, sino que te acompañamos en la implementación para maximizar tu éxito.
+____________________________________________________________________________________
+
+
+[SECCIÓN]: Lo Que Dicen Nuestros Clientes
+[ACCIÓN]: Diseño tipo carrusel (horizontal), o tarjetas con 2–3 testimonios visibles a la vez. Debe mantener coherencia con el diseño actual del sitio.
+
+
+[ESTRUCTURA DE CADA TESTIMONIAL]:
+- Imagen del cliente (archivo proporcionado)
+- Nombre del cliente
+- Cargo u ocupación 
+- Texto del testimonio
+- Valoración (5 estrellas todos los comentarios)
+
+
+[CONTENIDO A INSERTAR]:
+
+
+1. **Nombre:** Luis Rodríguez
+   **Cargo:** Asesor Inmobiliario
+   **Testimonio:** Después del curso, aumenté mis cierres en un 40% en solo 2 meses. ¡Increíble! 
+2. **Nombre:** Claudia Sánchez
+   **Cargo:** Emprendedora de e-commerce 
+   **Testimonio:** Antes vendía por intuición. Hoy tengo un método claro que me da resultados reales
+3. **Nombre:** Arturo López
+   **Cargo:** Gerente de Ventas
+   **Testimonio:** El entrenamiento de liderazgo me ayudó a recuperar la confianza y motivar a mi equipo.
+4. **Nombre:** Karina Méndez
+   **Cargo:** Consultora de Belleza
+   **Testimonio:** Gracias al coaching 1 a 1, aprendí a vender por WhatsApp sin sonar agresivo. ¡Cierro más!
+5. **Nombre:** Héctor Salas
+   **Cargo:** Ejecutivo de Seguros
+   **Testimonio:** Javier no te da rollo, te da herramientas. Apliqué lo aprendido y lo vi en mi bolsillo.
+6. **Nombre:** Paola Rivas
+    **Cargo:** Representante de Ventas Industriales
+   **Testimonio:** El curso de objeciones me cambió el juego. Ya no me quedo sin saber qué responder.
+7. **Nombre:** Ricardo Morales
+   **Cargo:** Emprendedor de Servicios Financieros
+   **Testimonio:** Aumenté mis ingresos, pero también mi seguridad personal. Este entrenamiento es completo.
+8. **Nombre:** Ana Beltrán
+   **Cargo:** Networker y Líder de Multinivel
+   **Testimonio:** He tomado varios cursos de ventas, pero este fue el único que me generó resultados inmediatos.
+9. **Nombre:** Daniel Ortega
+   **Cargo:** Asesor de Créditos
+   **Testimonio:** Aplicar neuroventas cambió cómo me ven mis clientes. Hoy cierro más y con mayor autoridad.
+10. **Nombre:** Mariana Torres
+   **Cargo:** Vendedora de Autos
+   **Testimonio:** Increíble cómo con pequeños cambios en mi discurso, mis ventas se dispararon.
+
+
+
+
+[NOTAS ADICIONALES]:  
+- Las imágenes deben tener diseño circular o bordes redondeados.  
+____________________________________________________________________________________
+[SECCIÓN]: Contáctame Aquí
+Información de contacto
+1. Dirección
+   - ANTES: Av. Insurgentes Sur 1602, Ciudad de México, 03940
+   - DESPUÉS: Av. Aguascalientes Nte 613, Parras, 20157 Aguascalientes, Ags. 
+2. Email 
+   - ANTES: contacto@escueladevendedores.com
+   - DESPUÉS: javier@javierdiaz.com.mx
+3. Teléfono
+   - ANTES: +52 (55) 1234 5678
+   - DESPUÉS: +52 449 186 6213
+4. Redes sociales 
+   - ANTES: Botones facebook, twitter, instagram, linkedin, youtube
+   - DESPUÉS: Botones facebook e instagram
+5. Redes sociales 
+   - ANTES: Botones facebook e instagram sin link 
+   - DESPUÉS: Facebook: www.facebook.com/javierdiazpoder  
+Instagram: www.instagram.com/javierdiazpoder 
+6. Botón WhatsApp
+   - ANTES: Sin link 
+   - DESPUÉS: wa.link/1q2983 
+____________________________________________________________________________________
+[SECCIÓN]: Footer
+Cambio de información 
+1. Botones redes sociales
+   - ANTES: Botones facebook, twitter, instagram, linkedin, youtube
+   - DESPUÉS: Botones facebook e instagram
+2. Botones redes sociales
+   - ANTES: Botones facebook e instagram sin link 
+   - DESPUÉS: Facebook: www.facebook.com/javierdiazpoder  
+Instagram: www.instagram.com/javierdiazpoder 
+3.Cursos populares
+   - ANTES: Nombre del apartado “Cursos populares” 
+   - DESPUÉS: Nombre del apartado “Servicios populares” 
+4. Servicios populares
+   - ANTES:
+Neuroventas Avanzadas
+Técnicas de Cierre Efectivo
+Ventas con Inteligencia Artificial
+Liderazgo en Equipos Comerciales
+Negociación de Alto Impacto
+   - DESPUÉS:
+Coaching 1 a 1 para Vendedores y Emprendedores
+Mentoría para Equipos Comerciales
+Talleres Empresariales In Company
+Consultoría Estratégica Comercial
+Estrategia de Redes Sociales basado en inteligencia artificial
+5. Dirección
+   - ANTES: Av. Insurgentes Sur 1602, Ciudad de México, 03940
+   - DESPUÉS: Av. Aguascalientes Nte 613, Parras, 20157 Aguascalientes, Ags. 
+6. Email 
+   - ANTES: contacto@escueladevendedores.com
+   - DESPUÉS: javier@javierdiaz.com.mx
+7. Teléfono
+   - ANTES: +52 (55) 1234 5678
+   - DESPUÉS: +52 449 186 6213
+___________________________________________________________________________________
+
+
+[SECCIÓN]: A consideración según mejor ubicación
+Añadir mención destacada  – Bolsa de trabajo para vendedores
+[ANTES]: No existía
+[DESPUÉS]: Incluir una mención visual destacada (por ejemplo, como esta en la parte de “¿Listo para transformar tu carrera comercial?” que tenga una estructura muy parecida pero sin botones, quiero que vaya en la parte inferior de la sección “Beneficios de Nuestros Servicios”) sobre la oportunidad de integrarse a la “bolsa de trabajo de Javier Díaz” como vendedor al tomar los cursos o servicios del cliente.
+Esta mención funcionará como un “plus” de valor agregado.
+Texto sugerido:
+ “Además de capacitarte con nosotros, podrás ser parte de nuestra red de vendedores.”
+ “Conoce cómo nuestros cursos pueden abrirte nuevas oportunidades laborales.”

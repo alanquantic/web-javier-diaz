@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="50" viewBox="0 0 400 50">
+  <path d="M20 5H40V15H30V20H40V30H30V45H20V5Z" fill="#1a56db"/>
+  <path d="M50 5H70L80 25L90 5H110L90 45H70L50 5Z" fill="#1a56db"/>
+  <path d="M120 5H160V15H140V20H155V30H140V35H160V45H120V5Z" fill="#1a56db"/>
+  <path d="M170 5H190V35H210V45H170V5Z" fill="#1a56db"/>
+  <path d="M220 5H260V15H240V45H220V5Z" fill="#1a56db"/>
+  <path d="M270 5H310V15H290V20H305V30H290V35H310V45H270V5Z" fill="#1a56db"/>
+  <path d="M320 5H340V15H350V45H330V15H320V5Z" fill="#1a56db"/>
+  <path d="M360 5H380V45H360V5Z" fill="#1a56db"/>
+  <path d="M390 5H400L380 25L400 45H390L370 25L390 5Z" fill="#1a56db"/>
+</svg>

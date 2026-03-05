@@ -1,0 +1,68 @@
+Create a professional, sales-focused website for a business called "Escuela de Vendedores Profesionales" (School of Professional Sellers). The website should be designed to attract potential clients, build trust, and convert visitors into paying customers. Use the following guidelines and structure to design the site:
+
+1. Homepage Design
+Banner Section (Hero Section):
+Headline: "Multiplica tus Ventas. Lidera tu Vida." (Multiply Your Sales. Lead Your Life.)
+Subheadline: "Aprende a cerrar más, dominar tu proceso comercial y convertirte en el líder que siempre has querido ser." (Learn to close more deals, master your sales process, and become the leader you've always wanted to be.)
+Include a short introduction: "¡Hola! Soy Javier Díaz, y he enseñado a más de 3000 alumnos a aumentar sus ventas y mejorar su vida de una manera fácil y con resultados comprobados." (Hi! I’m Javier Díaz, and I’ve taught over 3000 students how to increase their sales and improve their lives easily with proven results.)
+Add a call-to-action button: "Empieza Ahora" (Start Now).
+Include placeholder images of past courses or events (e.g., workshops, coaching sessions).
+Color Scheme: Use vibrant colors like royal blue, red, black, and white to create a bold and professional look. Take inspiration from the website Mercatitlan.com.
+2. Purchase Process Section
+Create a section titled "Proceso de Compra en 3 Pasos" (Purchase Process in 3 Steps):
+Step 1: "Selecciona tu curso o servicio."
+Step 2: "Completa tu información y selecciona tu método de pago."
+Step 3: "Agenda tu cita de coaching (Respuesta en 3 días)."
+Include icons or visuals to represent each step.
+3. Benefits Section
+Title: "Beneficios de los Servicios" (Benefits of Our Services).
+Use bullet points with checkmarks (✅) to highlight the benefits:
+Incremento de ventas hasta un 30% en el primer año. (Increase sales by up to 30% in the first year.)
+Métodos probados con más de 3,000 vendedores capacitados. (Methods tested with over 3,000 trained sellers.)
+Entrenamiento basado en neuroventas y persuasión efectiva. (Training based on neuromarketing and effective persuasion.)
+Implementación inmediata de estrategias prácticas. (Immediate implementation of practical strategies.)
+Capacitación flexible y adaptable a cualquier industria. (Flexible training adaptable to any industry.)
+Acceso a seguimiento y asesoría personalizada. (Access to follow-up and personalized coaching.)
+Te ayudamos a encontrar empleo. (We help you find employment.)
+4. Products and Services Section
+Title: "Productos y Servicios que Ofrecemos" (Products and Services We Offer).
+Divide into two subsections:
+Cursos y Programas de Entrenamiento (Courses and Training Programs):
+List the courses offered (placeholder names like "Neuroventas Avanzadas," "Técnicas de Cierre Efectivo," etc.).
+Include placeholder images of past courses or events.
+Servicios Personalizados (Customized Services):
+Coaching 1 a 1 para Vendedores y Emprendedores (One-on-One Coaching for Sellers and Entrepreneurs).
+Mentoría para Equipos Comerciales (Team Sales Mentoring).
+Conferencias para Empresas y Eventos (Corporate and Event Conferences).
+Talleres Empresariales In Company (In-House Corporate Workshops).
+Consultoría Estratégica Comercial (Strategic Sales Consulting).
+Estrategia de Redes Sociales basada en Inteligencia Artificial (AI-Based Social Media Strategy).
+5. Objections Section
+Title: "¿Tienes Dudas? Aquí están las Respuestas" (Have Questions? Here Are the Answers).
+Address common objections with clear responses:
+Example: "¿Cómo sé que este entrenamiento realmente me ayudará a vender más?" (How do I know this training will really help me sell more?)
+Response: "Método probado con más de 3,000 vendedores. Estrategias validadas, resultados medibles y herramientas aplicables desde el primer día." (Tested method with over 3,000 sellers. Validated strategies, measurable results, and tools applicable from day one.)
+Repeat for 10 objections as provided.
+6. Testimonials Section
+Title: "Lo Que Dicen Nuestros Clientes" (What Our Clients Say).
+Include testimonials with photos or videos (if possible):
+Example: “Después del curso, aumenté mis cierres en un 40% en solo 2 meses. ¡Increíble!” — Luis Rodríguez, Asesor Inmobiliario. (After the course, I increased my closings by 40% in just 2 months. Incredible!)
+Add placeholders for 4 video testimonials.
+7. Blog Section
+Title: "Artículos Recientes" (Recent Articles).
+Include links to 20 blog posts (use placeholder titles like "Cómo Mejorar Tus Ventas en 30 Días," "El Poder de la Neuroventas," etc.).
+Add a call-to-action button: "Descarga Nuestros Artículos Gratis" (Download Our Free Articles).
+8. Contact Section
+Title: "Contáctame Aquí" (Contact Me Here).
+Add a WhatsApp button linking to the client's WhatsApp number.
+Include a lead capture form with fields for name, email, and phone number.
+Add a note: "Suscríbete para recibir contenido exclusivo y descuentos especiales." (Subscribe to receive exclusive content and special discounts.)
+9. General Design Notes
+Use a clean, modern layout with vibrant colors (royal blue, red, black, white).
+Ensure the website is mobile-friendly and optimized for fast loading.
+Add social proof elements like badges, certifications, or partner logos.
+Include a sticky header with navigation links: Home, Courses, Services, Testimonials, Blog, Contact.
+Final Instructions
+Generate the website code using HTML, CSS, and JavaScript.
+Ensure all sections are visually appealing and aligned with the client’s branding.
+Make the website ready for deployment with placeholders for images, videos, and text.
