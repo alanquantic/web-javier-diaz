@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
                 <span className="font-bold text-black text-sm text-center leading-tight">+5000<br/>alumnos</span>
               </motion.div>
               <img 
-                src="/galeria_3.png" 
+                src="/public/Iniciojd.webp" 
                 alt="Entrenamiento de ventas con Javier Díaz" 
                 className="rounded-xl shadow-2xl w-full object-cover" 
                 style={{ height: "500px" }}
