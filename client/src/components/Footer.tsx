@@ -13,12 +13,18 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6">
               Transformamos vendedores ordinarios en extraordinarios profesionales de las ventas.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200">
+            <div className="flex flex-wrap gap-4">
+              <a href="https://www.facebook.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200 text-lg" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="https://www.instagram.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200">
+              <a href="https://www.instagram.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200 text-lg" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/javierdiazpoder/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200 text-lg" aria-label="LinkedIn">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://www.tiktok.com/@javierdiazpoder" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-200 text-lg" aria-label="TikTok">
+                <i className="fab fa-tiktok"></i>
               </a>
             </div>
           </div>
