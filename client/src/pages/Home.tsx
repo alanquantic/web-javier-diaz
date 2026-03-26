@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
 import ProcessSection from "@/components/ProcessSection";
 import BenefitsSection from "@/components/BenefitsSection";
+import BookPromoSection from "@/components/BookPromoSection";
 import FeaturedCourseSection from "@/components/FeaturedCourseSection";
 import CoursesSection from "@/components/CoursesSection";
 import FAQSection from "@/components/FAQSection";
@@ -111,6 +112,7 @@ const Home: React.FC = () => {
         <HeroSection />
         <StatsSection />
         <BenefitsSection />
+        <BookPromoSection />
         <FeaturedCourseSection />
         <CoursesSection />
         <ProcessSection />
