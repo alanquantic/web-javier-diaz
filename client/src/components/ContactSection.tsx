@@ -139,12 +139,18 @@ const ContactSection: React.FC = () => {
             {/* Redes sociales */}
             <div className="mb-8">
               <h3 className="text-2xl font-bold mb-6">Síguenos en redes sociales</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+              <div className="flex flex-wrap gap-3">
+                <a href="https://www.facebook.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors" aria-label="Facebook">
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white hover:bg-pink-600 transition-colors">
+                <a href="https://www.instagram.com/javierdiazpoder" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white hover:bg-pink-600 transition-colors" aria-label="Instagram">
                   <i className="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/javierdiazpoder/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0A66C2] rounded-full flex items-center justify-center text-white hover:bg-[#004182] transition-colors" aria-label="LinkedIn">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.tiktok.com/@javierdiazpoder" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-black transition-colors" aria-label="TikTok">
+                  <i className="fab fa-tiktok"></i>
                 </a>
               </div>
             </div>
