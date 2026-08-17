@@ -3,6 +3,15 @@ import { insertNewsletterSchema } from "../shared/schema";
 import { ZodError } from "zod";
 import { storage } from "../server/storage";
 import { sendEmail } from "../server/emails";
+import { checkBotId } from "botid/server";
+import {
+  logSpamRejection,
+  screenSubmission,
+} from "../server/antiSpam";
+
+const SUCCESS_RESPONSE = {
+  message: "¡Gracias por suscribirte a nuestra newsletter!",
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -10,21 +19,39 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
+  const payload =
+    req.body && typeof req.body === "object" ? req.body : {};
+
   try {
-    const newsletterData = insertNewsletterSchema.parse(req.body);
+    const botResult = await checkBotId({
+      advancedOptions: { headers: req.headers },
+    });
+    if (botResult.isBot) {
+      logSpamRejection("BotID", payload);
+      return res.status(200).json(SUCCESS_RESPONSE);
+    }
+  } catch (error) {
+    console.warn("[anti-spam] checkBotId no disponible:", error);
+  }
+
+  const screening = screenSubmission(payload, "newsletter");
+  if (!screening.valid) {
+    logSpamRejection(screening.reason, payload);
+    return res.status(200).json(SUCCESS_RESPONSE);
+  }
+
+  try {
+    const newsletterData = insertNewsletterSchema.parse(payload);
 
     const existingSubscription = await storage.getNewsletterByEmail(
       newsletterData.email,
     );
 
     if (existingSubscription) {
-      return res.status(200).json({
-        message: "¡Ya estás suscrito a nuestra newsletter!",
-        subscription: existingSubscription,
-      });
+      return res.status(200).json(SUCCESS_RESPONSE);
     }
 
-    const subscription = await storage.createNewsletter(newsletterData);
+    await storage.createNewsletter(newsletterData);
 
     try {
       await sendEmail({
@@ -80,16 +107,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.error("Error sending welcome email:", emailError);
     }
 
-    return res.status(201).json({
-      message: "¡Gracias por suscribirte a nuestra newsletter!",
-      subscription,
-    });
+    return res.status(200).json(SUCCESS_RESPONSE);
   } catch (error) {
     if (error instanceof ZodError) {
-      return res.status(400).json({
-        message: "Error en los datos enviados",
-        errors: error.errors,
-      });
+      logSpamRejection("esquema inválido", payload);
+      return res.status(200).json(SUCCESS_RESPONSE);
     }
 
     console.error("Error processing newsletter subscription:", error);

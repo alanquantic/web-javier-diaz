@@ -13,11 +13,9 @@ import { CreditCard, User, Mail, Phone, Building, CheckCircle } from "lucide-rea
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-// Initialize Stripe
-if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
-  throw new Error('Missing required Stripe key: VITE_STRIPE_PUBLIC_KEY');
-}
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+// Keep the rest of the site available when payments are not configured locally.
+const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+const stripePromise = stripePublicKey ? loadStripe(stripePublicKey) : null;
 
 const paymentFormSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -202,6 +200,15 @@ const PaymentModal: React.FC<PaymentModalProps> = ({
   };
 
   const onSubmit = async (data: PaymentFormData) => {
+    if (!stripePromise) {
+      toast({
+        title: "Pagos no disponibles",
+        description: "Stripe no está configurado en este entorno.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setUserInfo(data);
     
     const finalPrice = discountInfo?.finalPrice || coursePrice;
