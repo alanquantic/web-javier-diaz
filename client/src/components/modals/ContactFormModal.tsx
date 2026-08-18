@@ -21,6 +21,8 @@ import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { useFormToken } from "@/hooks/use-form-token";
+import HoneypotField from "@/components/HoneypotField";
 
 interface ContactFormModalProps {
   open: boolean;
@@ -44,8 +46,10 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
   const [message, setMessage] = useState("");
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [contactMethod, setContactMethod] = useState("whatsapp");
+  const [companyWebsite, setCompanyWebsite] = useState("");
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { formToken, refreshFormToken } = useFormToken();
 
   const resetForm = () => {
     setName("");
@@ -55,6 +59,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
     setMessage("");
     setDate(undefined);
     setContactMethod("whatsapp");
+    setCompanyWebsite("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -78,7 +83,9 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
         message,
         contactMethod,
         appointmentDate: date ? format(date, "yyyy-MM-dd") : undefined,
-        requestType: type
+        requestType: type,
+        company_website: companyWebsite,
+        formToken,
       });
 
       toast({
@@ -87,6 +94,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
       });
 
       resetForm();
+      refreshFormToken();
       onOpenChange(false);
     } catch (error) {
       toast({
@@ -108,6 +116,7 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
+          <HoneypotField value={companyWebsite} onChange={setCompanyWebsite} />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="name">Nombre*</Label>
@@ -222,8 +231,8 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
             <DialogClose asChild>
               <Button type="button" variant="outline">Cancelar</Button>
             </DialogClose>
-            <Button type="submit" disabled={loading}>
-              {loading ? "Enviando..." : "Enviar solicitud"}
+            <Button type="submit" disabled={loading || !formToken}>
+              {loading ? "Enviando..." : !formToken ? "Preparando..." : "Enviar solicitud"}
             </Button>
           </DialogFooter>
         </form>

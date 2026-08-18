@@ -153,7 +153,8 @@ export class MemStorage implements IStorage {
       ...insertUser, 
       id, 
       createdAt,
-      phone: insertUser.phone || null
+      phone: insertUser.phone ?? null,
+      role: insertUser.role ?? "user"
     };
     this.users.set(id, user);
     return user;
@@ -180,7 +181,9 @@ export class MemStorage implements IStorage {
       company: insertContact.company || null,
       message: insertContact.message || null,
       appointmentDate: insertContact.appointmentDate || null,
-      subject: insertContact.subject || null
+      subject: insertContact.subject || null,
+      contactMethod: insertContact.contactMethod ?? "whatsapp",
+      requestType: insertContact.requestType ?? "info"
     };
     this.contacts.set(id, contact);
     return contact;
@@ -262,6 +265,7 @@ export class MemStorage implements IStorage {
       remindersSent,
       zoomLink,
       company: insertEnrollment.company || null,
+      cardholderName: null,
       stripePaymentIntentId: insertEnrollment.stripePaymentIntentId || null,
       discountApplied: insertEnrollment.discountApplied || false,
       finalPrice: insertEnrollment.finalPrice || insertEnrollment.coursePrice
