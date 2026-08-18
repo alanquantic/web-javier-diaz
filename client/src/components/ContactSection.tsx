@@ -1,23 +1,22 @@
-// He añadido useRef a tu importación de React
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState, useRef, type ReactNode } from "react"; // --- MODIFICADO ---
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import ReCAPTCHA from "react-google-recaptcha"; // --- NUEVO ---
+import { useFormToken } from "@/hooks/use-form-token";
+import HoneypotField from "@/components/HoneypotField";
 
 const ContactSection: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
-  // --- NUEVO (Paso 1): Crear la referencia para reCAPTCHA ---
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const { formToken, refreshFormToken } = useFormToken();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,27 +30,16 @@ const ContactSection: React.FC = () => {
       return;
     }
 
-    // --- NUEVO (Paso 2): Obtener y validar el token de reCAPTCHA ---
-    const recaptchaToken = recaptchaRef.current?.getValue();
-    if (!recaptchaToken) {
-        toast({
-            title: "Verificación requerida",
-            description: "Por favor, verifica que no eres un robot.",
-            variant: "destructive"
-        });
-        return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      // --- MODIFICADO: Añadir el token al objeto que se envía ---
       await apiRequest('POST', '/api/contact', { 
         name, 
         email, 
         subject, 
         message,
-        'g-recaptcha-response': recaptchaToken // El backend lo recibirá aquí
+        company_website: companyWebsite,
+        formToken
       });
 
       toast({
@@ -63,8 +51,8 @@ const ContactSection: React.FC = () => {
       setEmail('');
       setSubject('');
       setMessage('');
-      // --- NUEVO (Paso 3): Resetear el reCAPTCHA después de enviar ---
-      recaptchaRef.current?.reset();
+      setCompanyWebsite('');
+      refreshFormToken();
 
     } catch (error) {
       toast({
@@ -174,6 +162,7 @@ const ContactSection: React.FC = () => {
           >
             <form className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" onSubmit={handleSubmit}>
               <h3 className="text-2xl font-bold mb-6">Envíame un mensaje</h3>
+              <HoneypotField value={companyWebsite} onChange={setCompanyWebsite} />
 
               {/* Fila de Nombre y Email */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -225,23 +214,15 @@ const ContactSection: React.FC = () => {
                 />
               </div>
 
-              {/* reCAPTCHA */}
-              <div className="mb-6 flex justify-center">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey="6LdqKJ8rAAAAACpzu3OPpHnYR9gdNvhqVMrUdpJR"
-                />
-              </div>
-
               {/* Botón de enviar */}
               <Button 
                 type="submit" 
                 className="w-full bg-blue-600 hover:bg-blue-700 py-3 transition-all duration-300 hover:shadow-md"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !formToken}
               >
-                {isSubmitting ? (
+                {isSubmitting || !formToken ? (
                   <span className="flex items-center justify-center">
-                    <i className="fas fa-spinner fa-spin mr-2"></i> Enviando...
+                    <i className="fas fa-spinner fa-spin mr-2"></i> {isSubmitting ? "Enviando..." : "Preparando..."}
                   </span>
                 ) : (
                   <span className="flex items-center justify-center">

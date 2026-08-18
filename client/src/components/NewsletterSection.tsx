@@ -4,12 +4,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { useFormToken } from "@/hooks/use-form-token";
+import HoneypotField from "@/components/HoneypotField";
 
 const NewsletterSection: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { formToken, refreshFormToken } = useFormToken();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +30,12 @@ const NewsletterSection: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      await apiRequest('POST', '/api/newsletter', { name, email });
+      await apiRequest('POST', '/api/newsletter', {
+        name,
+        email,
+        company_website: companyWebsite,
+        formToken,
+      });
       
       toast({
         title: "¡Suscripción exitosa!",
@@ -35,6 +44,8 @@ const NewsletterSection: React.FC = () => {
       
       setName('');
       setEmail('');
+      setCompanyWebsite('');
+      refreshFormToken();
     } catch (error) {
       toast({
         title: "Error",
@@ -81,6 +92,7 @@ const NewsletterSection: React.FC = () => {
             </div>
             <div className="md:w-1/2">
               <form className="space-y-4" onSubmit={handleSubmit}>
+                <HoneypotField value={companyWebsite} onChange={setCompanyWebsite} />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Nombre
@@ -112,9 +124,9 @@ const NewsletterSection: React.FC = () => {
                 <Button 
                   type="submit" 
                   className="w-full py-3" 
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !formToken}
                 >
-                  {isSubmitting ? "Procesando..." : "Suscribirme ahora"}
+                  {isSubmitting ? "Procesando..." : !formToken ? "Preparando..." : "Suscribirme ahora"}
                 </Button>
                 <p className="text-xs text-gray-500 text-center">
                   No hacemos spam. Puedes darte de baja en cualquier momento.

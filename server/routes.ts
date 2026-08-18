@@ -13,23 +13,49 @@ import { sendEmail, generateEnrollmentEmail, generateReminderEmail } from "./ema
 import { sendPurchaseNotificationEmails } from "./purchaseNotification";
 import { addEnrollmentToSheet, type EnrollmentData } from "./googleSheets";
 import Stripe from "stripe";
+import {
+  issueFormToken,
+  logSpamRejection,
+  screenSubmission,
+} from "./antiSpam";
 
-// Initialize Stripe
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('Missing required Stripe secret: STRIPE_SECRET_KEY');
-}
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-07-30.basil",
-});
+const CONTACT_SUCCESS_RESPONSE = {
+  message: "Mensaje enviado con éxito. Nos pondremos en contacto pronto.",
+};
+const NEWSLETTER_SUCCESS_RESPONSE = {
+  message: "¡Gracias por suscribirte a nuestra newsletter!",
+};
+
+// Keep non-payment routes available in local development without Stripe.
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2025-07-30.basil",
+    })
+  : null;
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes for handling form submissions
+
+  app.get("/api/form-token", (_req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json({ token: issueFormToken() });
+  });
   
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
+    const payload = req.body && typeof req.body === "object" ? req.body : {};
+    const screening = screenSubmission(payload, "contact");
+    if (!screening.valid) {
+      logSpamRejection(screening.reason, payload);
+      return res.status(200).json(CONTACT_SUCCESS_RESPONSE);
+    }
+
     try {
-      const contactData = insertContactSchema.parse(req.body);
-      const contact = await storage.createContact(contactData);
+      const contactData = insertContactSchema.parse({
+        ...payload,
+        phone: typeof payload.phone === "string" ? payload.phone : "",
+      });
+      await storage.createContact(contactData);
       
       // Send email notification via Mailgun
       try {
@@ -60,16 +86,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Don't fail the request if email fails
       }
       
-      res.status(201).json({
-        message: "Mensaje enviado con éxito. Nos pondremos en contacto pronto.",
-        contact
-      });
+      res.status(200).json(CONTACT_SUCCESS_RESPONSE);
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({ 
-          message: "Error en los datos enviados",
-          errors: error.errors
-        });
+        logSpamRejection("esquema inválido", payload);
+        res.status(200).json(CONTACT_SUCCESS_RESPONSE);
       } else {
         console.error("Error processing contact:", error);
         res.status(500).json({ 
@@ -81,20 +102,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Newsletter subscription
   app.post("/api/newsletter", async (req, res) => {
+    const payload = req.body && typeof req.body === "object" ? req.body : {};
+    const screening = screenSubmission(payload, "newsletter");
+    if (!screening.valid) {
+      logSpamRejection(screening.reason, payload);
+      return res.status(200).json(NEWSLETTER_SUCCESS_RESPONSE);
+    }
+
     try {
-      const newsletterData = insertNewsletterSchema.parse(req.body);
+      const newsletterData = insertNewsletterSchema.parse(payload);
       
       // Check if email is already subscribed
       const existingSubscription = await storage.getNewsletterByEmail(newsletterData.email);
       
       if (existingSubscription) {
-        return res.status(200).json({
-          message: "¡Ya estás suscrito a nuestra newsletter!",
-          subscription: existingSubscription
-        });
+        return res.status(200).json(NEWSLETTER_SUCCESS_RESPONSE);
       }
       
-      const subscription = await storage.createNewsletter(newsletterData);
+      await storage.createNewsletter(newsletterData);
       
       // Send welcome email via Mailgun
       try {
@@ -148,16 +173,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Don't fail the request if email fails
       }
       
-      res.status(201).json({
-        message: "¡Gracias por suscribirte a nuestra newsletter!",
-        subscription
-      });
+      res.status(200).json(NEWSLETTER_SUCCESS_RESPONSE);
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({ 
-          message: "Error en los datos enviados",
-          errors: error.errors
-        });
+        logSpamRejection("esquema inválido", payload);
+        res.status(200).json(NEWSLETTER_SUCCESS_RESPONSE);
       } else {
         console.error("Error processing newsletter subscription:", error);
         res.status(500).json({ 
@@ -223,6 +243,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create Stripe Payment Intent for course enrollment
   app.post("/api/create-payment-intent", async (req, res) => {
     try {
+      if (!stripe) {
+        return res.status(503).json({ message: "Stripe no está configurado." });
+      }
+
       const { amount, courseName, discountApplied } = req.body;
       
       console.log('Creating payment intent for:', { amount, courseName, discountApplied });
@@ -406,6 +430,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Test endpoint to verify Stripe connection
   app.get("/api/stripe-test", async (req, res) => {
     try {
+      if (!stripe) {
+        return res.status(503).json({
+          success: false,
+          error: "Stripe no está configurado.",
+        });
+      }
+
       const account = await stripe.accounts.retrieve();
       res.json({ 
         success: true, 
@@ -424,4 +455,3 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   return httpServer;
 }
-

@@ -3,6 +3,15 @@ import { insertContactSchema } from "../shared/schema";
 import { ZodError } from "zod";
 import { storage } from "../server/storage";
 import { sendEmail } from "../server/emails";
+import { checkBotId } from "botid/server";
+import {
+  logSpamRejection,
+  screenSubmission,
+} from "../server/antiSpam";
+
+const SUCCESS_RESPONSE = {
+  message: "Mensaje enviado con éxito. Nos pondremos en contacto pronto.",
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -10,9 +19,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
+  const payload =
+    req.body && typeof req.body === "object" ? req.body : {};
+
   try {
-    const contactData = insertContactSchema.parse(req.body);
-    const contact = await storage.createContact(contactData);
+    const botResult = await checkBotId({
+      advancedOptions: { headers: req.headers },
+    });
+    if (botResult.isBot) {
+      logSpamRejection("BotID", payload);
+      return res.status(200).json(SUCCESS_RESPONSE);
+    }
+  } catch (error) {
+    console.warn("[anti-spam] checkBotId no disponible:", error);
+  }
+
+  const screening = screenSubmission(payload, "contact");
+  if (!screening.valid) {
+    logSpamRejection(screening.reason, payload);
+    return res.status(200).json(SUCCESS_RESPONSE);
+  }
+
+  try {
+    const contactData = insertContactSchema.parse({
+      ...payload,
+      phone: typeof payload.phone === "string" ? payload.phone : "",
+    });
+    await storage.createContact(contactData);
 
     try {
       const recipients = ["alan@ceosnm.com", "javier@javierdiaz.com.mx"];
@@ -40,16 +73,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       console.error("Error sending email notification:", emailError);
     }
 
-    return res.status(201).json({
-      message: "Mensaje enviado con éxito. Nos pondremos en contacto pronto.",
-      contact,
-    });
+    return res.status(200).json(SUCCESS_RESPONSE);
   } catch (error) {
     if (error instanceof ZodError) {
-      return res.status(400).json({
-        message: "Error en los datos enviados",
-        errors: error.errors,
-      });
+      logSpamRejection("esquema inválido", payload);
+      return res.status(200).json(SUCCESS_RESPONSE);
     }
 
     console.error("Error processing contact:", error);
