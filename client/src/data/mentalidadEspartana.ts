@@ -37,7 +37,5 @@ export const mentalidadEspartana = {
     <p>El recorrido que propone el documento conecta propósito, disciplina, incomodidad, autocontrol, entrenamiento, iniciativa, equipo, mentoría, liderazgo y acción. Puedes usarlo como guía de reflexión, sin convertirlo en una fórmula rígida.</p>
     <h2>Fortalecer tu capacidad de respuesta</h2>
     <p>Las dificultades forman parte de cualquier proceso de crecimiento. Esta interpretación de la mentalidad espartana invita a prepararte para responder con mayor claridad, constancia y responsabilidad. Empieza con un compromiso que puedas sostener hoy y construye desde ahí.</p>
-    <hr />
-    <p><small>Artículo adaptado del documento proporcionado <em>Mentalidad espartana: 10 principios para el desarrollo humano</em>. El PDF cita a Jenofonte, <em>Constitución de los lacedemonios</em> (especialmente capítulos 2 y 5); a Plutarco, <em>Vida de Licurgo</em>; y la entrada «Sparta» de la <em>Encyclopaedia Britannica</em> de 1911. Los ejemplos cotidianos de este artículo desarrollan la interpretación contemporánea del documento.</small></p>
   `,
 };
