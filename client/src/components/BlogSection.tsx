@@ -1,3 +1,4 @@
+import { mentalidadEspartana } from "@/data/mentalidadEspartana";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -5,6 +6,7 @@ import { formatDate } from "@/lib/utils";
 import ShareButtons from "./ShareButtons";
 
 const blogPosts = [
+  mentalidadEspartana,
   {
     image: "/diez_miedos_que_todo_vendedor_enfrenta_y_nadie_se_atreve_a_contar_1749740862170.webp",
     date: "2025-01-15",
@@ -153,8 +155,8 @@ const blogPosts = [
 
 const BlogSection: React.FC = () => {
   
-  // Solo mostrar los 4 artículos más recientes en la página principal
-  const recentPosts = blogPosts.slice(0, 4);
+  // Solo mostrar los 3 artículos más recientes en la página principal
+  const recentPosts = blogPosts.slice(0, 3);
   
   return (
     <section id="blog" className="py-16 bg-gray-50">
@@ -174,7 +176,7 @@ const BlogSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {recentPosts.map((post, index) => (
             <motion.article
               key={index}
