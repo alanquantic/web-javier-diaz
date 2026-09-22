@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#071a36"/><stop offset="1" stop-color="#0b4caf"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1370" cy="430" r="370" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="90"/>
+  <path d="M1230 210 1430 650h-95l-105-245-105 245h-95z" fill="#ffffff" opacity=".12"/>
+  <rect x="120" y="220" width="90" height="9" fill="#ef462d"/>
+  <g fill="#fff" font-family="Arial, Helvetica, sans-serif">
+    <text x="120" y="295" font-size="27" letter-spacing="7">DESARROLLO HUMANO</text>
+    <text x="112" y="425" font-size="100" font-weight="700">MENTALIDAD</text>
+    <text x="112" y="540" font-size="100" font-weight="700">ESPARTANA</text>
+    <text x="120" y="625" font-size="34" fill="#c5d9f6">10 principios para llevar a la acción</text>
+    <text x="120" y="735" font-size="24" letter-spacing="3" fill="#c5d9f6">DISCIPLINA · RESILIENCIA · PROPÓSITO</text>
+  </g>
+</svg>

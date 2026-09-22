@@ -1,3 +1,4 @@
+import { mentalidadEspartana } from "@/data/mentalidadEspartana";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
@@ -10,6 +11,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 // COMPLETE BLOG POSTS DATA - All articles from the blog with full content
 const blogPosts = [
+  mentalidadEspartana,
   {
     image: "/diez_miedos_que_todo_vendedor_enfrenta_y_nadie_se_atreve_a_contar_1749740862170.webp",
     title: "Diez miedos que todo vendedor enfrenta (y nadie se atreve a contar)",
