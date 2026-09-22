@@ -1,3 +1,4 @@
+import { mentalidadEspartana } from "@/data/mentalidadEspartana";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Download, Search, Filter } from "lucide-react";
@@ -10,6 +11,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { BlogPostSchemas, OrganizationSchema } from "@/components/SEOSchemas";
 
 const blogPosts = [
+  mentalidadEspartana,
   {
     image: "/diez_miedos_que_todo_vendedor_enfrenta_y_nadie_se_atreve_a_contar_1749740862170.webp",
     date: "2025-01-15",
