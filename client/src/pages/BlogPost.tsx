@@ -1,6 +1,6 @@
 import { mentalidadEspartana } from "@/data/mentalidadEspartana";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User, Share2, Download } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { useRoute } from "wouter";
 import ShareButtons from "@/components/ShareButtons";
@@ -298,6 +298,19 @@ export default function BlogPost() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+
+              {post === mentalidadEspartana && (
+                <div className="mt-10">
+                  <a
+                    href="/downloads/mentalidad-espartana.pdf"
+                    download="MENTALIDAD ESPARTANA.pdf"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0B4CAF] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#093d8c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0B4CAF]"
+                  >
+                    <Download className="h-5 w-5" aria-hidden="true" />
+                    Descargar PDF
+                  </a>
+                </div>
+              )}
 
               {/* Share Section */}
               <motion.div
